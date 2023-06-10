@@ -114,7 +114,7 @@
     </nav>
   </header>
 
-  <section id="hero">
+<section id="hero">
   <div class="hero-content">
     <h2>Welcome to the Future of the Web</h2>
     <p>Experience the power of Web3 technology and decentralized applications.</p>
@@ -152,28 +152,42 @@
     heroContent.appendChild(walletAddressDiv);
   }
 
+  // Function to fetch wallet balance from the blockchain provider
+  function fetchWalletBalance(walletAddress) {
+    // Replace the API_URL with the actual API endpoint to fetch wallet balance
+    var API_URL = "https://api.example.com/balance?address=" + walletAddress;
+
+    // Make an API call to fetch the wallet balance
+    fetch(API_URL)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        // Update the wallet balance on the page
+        document.getElementById("balanceAmount").textContent = data.balance;
+      })
+      .catch(function(error) {
+        console.log("Error fetching wallet balance:", error);
+      });
+  }
+
   // Simulating wallet connection
   document.getElementById("connectButton").addEventListener("click", function() {
     // Replace this with your actual wallet connection logic
 
     // Simulating a delay to fetch wallet data
     setTimeout(function() {
-      var walletAddress = "0x451AdC053a403019836713A458dea0cBD49945a4";
-      var walletBalance = "10.5";
+      var walletAddress = "0x1234567890abcdef";
 
       // Update wallet content
-      showWalletContent(walletAddress, walletBalance);
+      showWalletContent(walletAddress, "Fetching...");
 
-      // Start real-time balance update (replace with your own logic)
-      setInterval(function() {
-        // Simulating balance update with random value
-        var newBalance = (parseFloat(walletBalance) + Math.random()).toFixed(2);
-        document.getElementById("balanceAmount").textContent = newBalance;
-        walletBalance = newBalance;
-      }, 5000); // Update balance every 5 seconds
+      // Fetch the actual wallet balance
+      fetchWalletBalance(walletAddress);
     }, 2000); // Simulating a 2-second delay for wallet connection
   });
 </script>
+
 
 
 
