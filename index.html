@@ -118,14 +118,14 @@
     <div class="hero-content">
       <h2>Welcome to the Future of the Web</h2>
       <p>Experience the power of Web3 technology and decentralized applications.</p>
-      <a href="#" class="btn">Get Started</a>
+      <button id="connectButton" class="btn">Connect Wallet</button>
     </div>
   </section>
 
   <section id="about">
     <div class="container">
       <h2>About Web3</h2>
-      <p>Web3 represents the next evolution of the internet, enabling a decentralized and user-centric web experience. It leverages blockchain technology, smart contracts, and peer-to-peer networks to empower users with greater control over their data, enhanced security,and seamless interactions with decentralized applications (dApps).</p>
+      <p>Web3 represents the next evolution of the internet, enabling a decentralized and user-centric web experience. It leverages blockchain technology, smart contracts, and peer-to-peer networks to empower users with greater control over their data,enhanced security, and seamless interactions with decentralized applications (dApps).</p>
 </div>
 
   </section>
@@ -152,6 +152,41 @@
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
+	  
+	  <!-- Optional: Add a success message after submitting the form -->
+    <div id="success-message" style="display: none;">
+        <p>Thank you for your message!</p>
+    </div>
+
+    <script>
+        // Optional: Show the success message after form submission
+        if (window.location.href.includes("success.html")) {
+            document.getElementById("success-message").style.display = "block";
+        }
+    </script>
+	<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    // Validate the form data
+    // Perform any necessary checks on the form inputs
+    // For example, you can check if the email is valid using filter_var()
+
+    // Process the form data
+    // Example: Save data to a file
+    $data = "Name: $name\nEmail: $email\nMessage: $message\n";
+    $file = fopen('form_data.txt', 'a');
+    fwrite($file, $data);
+    fclose($file);
+
+    // Redirect the user to a success page
+    header('Location: success.html');
+    exit;
+}
+?>
+	
     </div>
   </section>
   <footer>
@@ -161,13 +196,24 @@
   </footer>
   <script>
     window.addEventListener('DOMContentLoaded', async () => {
+      const connectButton = document.getElementById('connectButton');
+      
       // Check if Web3 is injected by the browser
       if (typeof web3 !== 'undefined') {
         // Use the browser's Ethereum provider
         window.web3 = new Web3(web3.currentProvider);
-        await web3.eth.requestAccounts(); // Request user's permission to connect their wallet
-        console.log('Connected to wallet:', web3.eth.accounts[0]);
-        // Perform actions or interact with smart contracts here
+        
+        connectButton.addEventListener('click', async () => {
+          try {
+            // Request user's permission to connect their wallet
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            console.log('Connected to wallet:', web3.eth.accounts[0]);
+            
+            // Perform actions or interact with smart contracts here
+          } catch (error) {
+            console.log('Failed to connect to wallet:', error);
+          }
+        });
       } else {
         console.log('No Web3 provider detected');
       }
