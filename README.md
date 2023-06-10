@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BuzzStyle Landing Page</title>
 </head>
 <body>
   <h1>BuzzStyle Landing Page</h1>
