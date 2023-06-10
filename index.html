@@ -115,12 +115,52 @@
   </header>
 
   <section id="hero">
-    <div class="hero-content">
-      <h2>Welcome to the Future of the Web</h2>
-      <p>Experience the power of Web3 technology and decentralized applications.</p>
-      <button id="connectButton" class="btn">Connect Wallet</button>
+  <div class="hero-content">
+    <h2>Welcome to the Future of the Web</h2>
+    <p>Experience the power of Web3 technology and decentralized applications.</p>
+    <button id="connectButton" class="btn">Connect Wallet</button>
+    
+    <!-- Wallet Balance -->
+    <div id="walletBalance" style="display: none;">
+      <p>Wallet Balance: <span id="balanceAmount"></span> ETH</p>
     </div>
-  </section>
+    
+    <!-- Wallet Address -->
+    <div id="walletAddress" style="display: none;">
+      <p>Your Wallet Address: <span id="addressValue"></span></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Function to show wallet content
+  function showWalletContent(walletAddress, walletBalance) {
+    // Get the hero content element
+    var heroContent = document.querySelector("#hero .hero-content");
+
+    // Clear existing content
+    heroContent.innerHTML = "";
+
+    // Create and append new content for wallet balance
+    var walletBalanceDiv = document.createElement("div");
+    walletBalanceDiv.innerHTML = "<p>Wallet Balance: <span id='balanceAmount'>" + walletBalance + "</span> ETH</p>";
+    heroContent.appendChild(walletBalanceDiv);
+
+    // Create and append new content for wallet address
+    var walletAddressDiv = document.createElement("div");
+    walletAddressDiv.innerHTML = "<p>Your Wallet Address: <span id='addressValue'>" + walletAddress + "</span></p>";
+    heroContent.appendChild(walletAddressDiv);
+  }
+
+  // Simulating wallet connection
+  document.getElementById("connectButton").addEventListener("click", function() {
+    // Replace this line with your actual wallet connection logic
+    var walletAddress = "0x1234567890abcdef";
+    var walletBalance = "10.5";
+    showWalletContent(walletAddress, walletBalance);
+  });
+</script>
+
 
   <section id="about">
     <div class="container">
