@@ -1,7 +1,108 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Web3 Landing Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    section#hero {
+      background-image: url('hero-image.jpg');
+      background-size: cover;
+    }
+  </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages. Test</p>
-</body>
-</html>
+  <header>
+    <h1>Web3 Landing Page</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h2>Welcome to the Future of the Web</h2>
+      <p>Experience the power of Web3 technology and decentralized applications.</p>
+      <button id="connectButton">Connect Wallet</button>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Web3</h2>
+      <p>Web3 represents the next evolution of the internet, enabling a decentralized and user-centric web experience. It leverages blockchain technology, smart contracts, and peer-to-peer networks to empower users with greater control over their data, enhanced security, and seamless interactions with decentralized applications (dApps).</p>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2>Features</h2>
+      <ul>
+        <li>Decentralized Identity</li>
+        <li>Immutable Data Storage</li>
+        <li>Secure Transactions</li>
+        <li>Smart Contracts</li>
+        <li>Interoperability</li>
+        <li>Tokenization</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have questions or want to learn more about Web3? Reach out to our team.</p>
+      <form action="submit.php" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Web3 Landing Page. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener
